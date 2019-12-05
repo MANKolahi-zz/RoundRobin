@@ -9,7 +9,7 @@ fun main() {
     list.add(Process("p3", 3, 3))
     list.add(Process("p4", 5, 6))
     list.add(Process("p5", 6, 6))
-    var quantum = 3
+    val quantum = 3
 /*    run {
         var quantumFlag = true
         do {
@@ -22,7 +22,7 @@ fun main() {
             }
         } while (!quantumFlag)
     }*/
-    var contextChangeTime = 1
+    val contextChangeTime = 1
     /*  run {
           var contextChangeTimeFlag = true
           do {
@@ -124,11 +124,14 @@ fun main() {
     println(runIterate)
     println(time)
     var totalWaitTime = 0
+    var totalResponseTime = 0
     list.forEach { process: Process ->
-        println(process.toString() + " | finishTime :" + process.getFinishTime() + " | startTime :" + process.getStartTime() + " | waitTime : " + process.getWaitTime())
+        println(process.toString() + " | finishTime :" + process.getFinishTime() + " | startTime :" + process.getStartTime() + " | waitTime : " + process.getWaitTime() + "  | responseTime : " + process.getResponseTime())
         totalWaitTime += process.getWaitTime()
+        totalResponseTime += process.getResponseTime()
     }
-    println("average : " + totalWaitTime/list.size)
+    println("average wait time : " + totalWaitTime/list.size)
+    println("average response time: " + totalResponseTime/list.size)
 
 }
 

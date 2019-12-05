@@ -69,6 +69,15 @@ class Process(private val name: String, private val burstTime: Int, private val 
         }
     }
 
+    fun getResponseTime():Int{
+        return when (startTime) {
+            -1 -> -1
+            else -> {
+                startTime - enterTime
+            }
+        }
+    }
+
     fun increaseReamingBurstTime(value: Int) {
         this.reamingBurstTime -= value
         if (reamingBurstTime <= 0)
