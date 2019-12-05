@@ -48,8 +48,25 @@ class Process(private val name: String, private val burstTime: Int, private val 
         return this.startTime
     }
 
+    fun setStartTime(value: Int){
+        this.startTime = value
+    }
+
     fun getFinishTime():Int{
         return this.finishTime
+    }
+
+    fun setFinishTime(value: Int){
+        this.finishTime = value
+    }
+
+    fun getWaitTime():Int{
+        return when{
+            startTime == -1 || finishTime == -1 -> -1
+            else -> {
+                finishTime - enterTime - burstTime
+            }
+        }
     }
 
     fun increaseReamingBurstTime(value: Int) {
